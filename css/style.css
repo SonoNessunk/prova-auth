@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Lexend", Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    transition: all 400ms cubic-bezier(.08, .82, .17, 1);
+}
+
+body {
+    background-color: #2e2e2e;
+    background-size: cover;
+}
+
+.background {
+    width: 450px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.background .shape {
+    z-index: -1;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(135deg, #d33030, #e25d5d);
+    left: -80px;
+    top: -80px;
+}
+
+.shape:last-child {
+    background: linear-gradient(135deg, #020202, #ffffff);
+    right: -30px;
+    bottom: -80px;
+}
+
+form {
+    width: 440px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 35px;
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+form * {
+    color: white;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+#submit {
+    margin-top: 30px;
+    width: 100%;
+    background-color: white;
+    padding: 15px 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #000;
+    border-radius: 5px;
+}
+
+#submit:hover {
+    filter: brightness(0.9);
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.social button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.social button:hover {
+    filter: brightness(0.9);
+}
+
+.social .go {
+    background-color: #db4437;
+}
+
+.social .fb {
+    background-color: #4267B2;
+}
+
+.social button i {
+    margin-right: 8px;
+}
+
+.form {
+    margin-top: 18px;
+}
+
+.form a {
+    font-weight: 700;
+}
+
+.form a:hover {
+    filter: brightness(0.7);
+}
+
+.pw-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pw-wrapper input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.pw-wrapper .toggle-pw {
+    margin-top: 8px;
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+}
+
+.pw-wrapper .toggle-pw:hover i {
+    filter: brightness(0.9);
+}

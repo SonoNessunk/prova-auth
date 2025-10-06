@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogedIn</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Lexend", Arial, sans-serif;
+            color: white;
+        }
+
+        /* Body */
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        /* Titolo */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #d33030;
+        }
+
+        /* Box info utente */
+        p {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            width: 500px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Immagine profilo */
+        p img {
+            border-radius: 50%;
+            border: 2px solid #d33030;
+        }
+
+        a {
+            background-color: rgb(73, 73, 73);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        a:hover {
+            filter: brightness(0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            p {
+                width: 90%;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Logged In</h1>
+    <p id="user-email"></p>
+    <p id="user-uid"></p>
+    <p id="user-name"></p>
+    <p id="user-photo"></p>
+    <p id="user-emailVerified"></p>
+    <p id="user-provider"></p>
+
+    <a href="./index">Back to Login</a>
+
+    <script type="module">
+        import { auth } from "/js/firebase-config.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+        const emailEl = document.getElementById("user-email");
+        const uidEl = document.getElementById("user-uid");
+        const nameEl = document.getElementById("user-name");
+        const photoEl = document.getElementById("user-photo");
+        const verifiedEl = document.getElementById("user-emailVerified");
+        const providerEl = document.getElementById("user-provider");
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                emailEl.textContent = `Email: ${user.email}`;
+                uidEl.textContent = `UID: ${user.uid}`;
+                nameEl.textContent = `Display Name: ${user.displayName || "N/A"}`;
+                photoEl.innerHTML = user.photoURL
+                    ? `Photo: <img src="${user.photoURL}" width="50" height="50">`
+                    : "Photo: N/A";
+                verifiedEl.textContent = `Email verificata: ${user.emailVerified}`;
+                providerEl.textContent = `Provider: ${user.providerData.map(p => p.providerId).join(", ")}`;
+            } else {
+                emailEl.textContent = "Nessun utente loggato!";
+                uidEl.textContent = "";
+                nameEl.textContent = "";
+                photoEl.textContent = "";
+                verifiedEl.textContent = "";
+                providerEl.textContent = "";
+                // window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+
+</html>

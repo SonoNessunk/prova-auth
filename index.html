@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/login.js" defer></script>
+    <script type="module" src="./js/auth-google.js" defer></script>
+    <script src="./js/gen.js" defer></script>
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <form action="#">
+        <h3>Login</h3>
+        <label for="username"> Username
+            <input type="email" placeholder="Email or username" id="email" required>
+        </label>
+
+        <label for="password"> Password
+            <div class="pw-wrapper">
+                <input type="password" placeholder="Password" id="password" required>
+                <button type="button" class="toggle-pw" id="togglePassword" aria-pressed="false"
+                    aria-label="Show Password">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </label>
+
+        <button type="submit" id="submit">Login</button>
+
+        <div class="social">
+            <button class="go" id="google">
+                <i class="fab fa-google"></i>Google
+            </button>
+            <!-- <div class="fb" id="facebook">
+                <i class="fab fa-facebook"></i>FaceBook
+            </div> -->
+
+        </div>
+
+        <div class="form">
+            <p>Don't have an account? <a href="register">Create Account</a></p>
+        </div>
+    </form>
+</body>
+
+</html>
