@@ -9,17 +9,21 @@
     font-weight: 500;
     font-style: normal;
     text-decoration: none;
-    transition: all 400ms cubic-bezier(.08, .82, .17, 1);
+    transition: all 0.4s cubic-bezier(.08, .82, .17, 1);
 }
 
 body {
     background-color: #2e2e2e;
     background-size: cover;
+    min-height: 100vh;
 }
 
+/* Background shapes */
 .background {
-    width: 450px;
-    height: 520px;
+    width: 90%;
+    max-width: 450px;
+    height: 60vh;
+    max-height: 520px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -28,8 +32,8 @@ body {
 
 .background .shape {
     z-index: -1;
-    height: 200px;
     width: 200px;
+    height: 200px;
     position: absolute;
     border-radius: 50%;
 }
@@ -46,8 +50,10 @@ body {
     bottom: -80px;
 }
 
+/* Form container */
 form {
-    width: 440px;
+    width: 90%;
+    max-width: 440px;
     background-color: rgba(255, 255, 255, 0.1);
     position: absolute;
     transform: translate(-50%, -50%);
@@ -56,7 +62,7 @@ form {
     left: 50%;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 50px 35px;
+    padding: 4rem 2rem;
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
 }
 
@@ -68,28 +74,28 @@ form * {
 }
 
 form h3 {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 500;
-    line-height: 42px;
+    line-height: 2.5rem;
     text-align: center;
 }
 
 form label {
     display: block;
-    margin-top: 30px;
-    font-size: 16px;
+    margin-top: 2rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 input {
     display: block;
-    height: 50px;
+    height: 3rem;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
+    padding: 0 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
     font-weight: 400;
 }
 
@@ -98,11 +104,11 @@ input {
 }
 
 #submit {
-    margin-top: 30px;
+    margin-top: 2rem;
     width: 100%;
     background-color: white;
-    padding: 15px 10px;
-    font-size: 18px;
+    padding: 0.75rem 0;
+    font-size: 1.125rem;
     font-weight: 500;
     cursor: pointer;
     color: #000;
@@ -113,26 +119,28 @@ input {
     filter: brightness(0.9);
 }
 
+/* Social buttons */
 .social {
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .social button {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48%;
-    padding: 10px 0;
+    padding: 0.5rem 0;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 500;
 }
 
-.social button:hover {
-    filter: brightness(0.9);
+.social button i {
+    margin-right: 0.5rem;
 }
 
 .social .go {
@@ -143,12 +151,14 @@ input {
     background-color: #4267B2;
 }
 
-.social button i {
-    margin-right: 8px;
+.social button:hover {
+    filter: brightness(0.9);
 }
 
+/* Additional form links */
 .form {
-    margin-top: 18px;
+    margin-top: 1rem;
+    text-align: center;
 }
 
 .form a {
@@ -159,6 +169,7 @@ input {
     filter: brightness(0.7);
 }
 
+/* Password toggle */
 .pw-wrapper {
     position: relative;
     display: flex;
@@ -167,23 +178,77 @@ input {
 
 .pw-wrapper input {
     flex: 1;
-    padding-right: 40px;
+    padding-right: 2.5rem;
 }
 
 .pw-wrapper .toggle-pw {
-    margin-top: 8px;
     position: absolute;
-    right: 10px;
+    right: 0.5rem;
     background: none;
     border: none;
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
-    padding: 5px;
-    width: 30px;
+    padding: 0.25rem;
+    width: 2rem;
     text-align: center;
 }
 
 .pw-wrapper .toggle-pw:hover i {
     filter: brightness(0.9);
+}
+
+/* Media queries per dispositivi piccoli */
+@media (max-width: 768px) {
+    form {
+        padding: 3rem 1.5rem;
+    }
+
+    form h3 {
+        font-size: 1.75rem;
+    }
+
+    input {
+        height: 2.5rem;
+        font-size: 0.875rem;
+    }
+
+    #submit {
+        font-size: 1rem;
+        padding: 0.6rem 0;
+    }
+
+    .social {
+        flex-direction: column;
+    }
+
+    .social button {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        width: 95%;
+        padding: 2rem 1rem;
+    }
+
+    form h3 {
+        font-size: 1.5rem;
+    }
+
+    label {
+        font-size: 0.875rem;
+    }
+
+    input {
+        height: 2.2rem;
+        font-size: 0.8rem;
+    }
+
+    #submit {
+        font-size: 0.95rem;
+        padding: 0.5rem 0;
+    }
 }
