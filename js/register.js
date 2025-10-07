@@ -1,24 +1,32 @@
-import { auth } from "./firebase-config.js";
-import { createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-
+import { auth, doc, setDoc, db, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "./firebase-config.js";
 const submit = document.getElementById('submit');
+
 submit.addEventListener("click", function (event) {
     event.preventDefault()
+    const username = document.getElementById('username').value
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
-            // Signed up 
+
             const user = userCredential.user;
+
+            await updateProfile(user, { displayName: username });
+
+            await setDoc(doc(db, "users", user.uid), {
+                email: user.email,
+                uid: user.uid,
+                displayName: username,
+            })
             await sendEmailVerification(user);
-            alert("Success")
-            window.location.href = "loged.html"
-            // ...
+            alert(`Signed in as ${user.email}`);
+            window.location.href = "profile"
         })
+
         .catch((error) => {
-            const errorCode = error.code; Sono.Nessunk.PC25
+            const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage)
             // ..
         });
-})
+});

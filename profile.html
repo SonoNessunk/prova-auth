@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogedIn</title>
+    <link rel="icon" href="/img/favicon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
 
     <style>
@@ -89,8 +90,8 @@
     <a href="./index">Back to Login</a>
 
     <script type="module">
-        import { auth } from "./js/firebase-config.js";
-        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+        import { auth, db, doc, getDoc } from "./js/firebase-config.js";
+        import { onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
         const emailEl = document.getElementById("user-email");
         const uidEl = document.getElementById("user-uid");
@@ -99,8 +100,15 @@
         const verifiedEl = document.getElementById("user-emailVerified");
         const providerEl = document.getElementById("user-provider");
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                const usernameFromDB = userDoc.exists() ? userDoc.data().displayName : null;
+
+                if (usernameFromDB && user.displayName !== usernameFromDB) {
+                    await updateProfile(user, { displayName: usernameFromDB });
+                }
+
                 emailEl.textContent = `Email: ${user.email}`;
                 uidEl.textContent = `UID: ${user.uid}`;
                 nameEl.textContent = `Display Name: ${user.displayName || "N/A"}`;

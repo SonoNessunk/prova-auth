@@ -1,17 +1,30 @@
-import { auth } from "./firebase-config.js";
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+import { auth, signInWithEmailAndPassword, db, collection, query, where, getDocs } from "./firebase-config.js";
 
 const submit = document.getElementById('submit');
-submit.addEventListener("click", function (event) {
+submit.addEventListener("click", async function (event) {
     event.preventDefault()
-    const email = document.getElementById('email').value;
+    const loginId = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    signInWithEmailAndPassword(auth, email, password)
+
+    let emailToUse = loginId
+
+    if (!loginId.includes("@")) {
+        const q = query(collection(db, "users"), where("displayName", "==", loginId));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            alert("Username non trovato");
+            return;
+        }
+        emailToUse = querySnapshot.docs[0].data().email;
+    }
+
+    signInWithEmailAndPassword(auth, emailToUse, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
             alert(`Signed in as ${user.email}`);
-            window.location.href = "loged.html"
+            window.location.href = "profile"
             // ...
         })
         .catch((error) => {
@@ -20,19 +33,3 @@ submit.addEventListener("click", function (event) {
             alert(errorMessage)
         });
 })
-
-const googleBtn = document.getElementById('google');
-const provider = new GoogleAuthProvider();
-
-googleBtn.addEventListener("click", () => {
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // Signed in
-            const user = result.user;
-            alert(`Signed in as ${user.displayName}`);
-            window.location.href = "loged.html";
-        })
-        .catch((error) => {
-            alert(error.message);
-        });
-});

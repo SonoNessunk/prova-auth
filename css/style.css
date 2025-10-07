@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #2e2e2e;
+    background-color: #222222;
     background-size: cover;
     min-height: 100vh;
 }
@@ -54,7 +54,7 @@ body {
 form {
     width: 90%;
     max-width: 440px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     transform: translate(-50%, -50%);
     border-radius: 10px;
@@ -192,6 +192,7 @@ input {
     padding: 0.25rem;
     width: 2rem;
     text-align: center;
+    margin-top: 0.5rem;
 }
 
 .pw-wrapper .toggle-pw:hover i {
