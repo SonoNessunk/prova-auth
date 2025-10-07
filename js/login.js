@@ -1,4 +1,12 @@
-import { auth, signInWithEmailAndPassword, db, collection, query, where, getDocs } from "./firebase-config.js";
+import {
+    auth,
+    signInWithEmailAndPassword,
+    db,
+    collection,
+    query,
+    where,
+    getDocs
+} from "./firebase-config.js";
 
 const submit = document.getElementById('submit');
 submit.addEventListener("click", async function (event) {

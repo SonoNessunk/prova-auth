@@ -1,4 +1,12 @@
-import { auth, doc, setDoc, db, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "./firebase-config.js";
+import {
+    auth,
+    doc,
+    setDoc,
+    db,
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile
+} from "./firebase-config.js";
 const submit = document.getElementById('submit');
 
 submit.addEventListener("click", function (event) {

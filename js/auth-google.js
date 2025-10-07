@@ -1,5 +1,8 @@
-import { auth } from "./firebase-config.js";
-import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+import {
+    auth,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "./firebase-config.js";
 
 const googleBtn = document.getElementById('google');
 const provider = new GoogleAuthProvider();
@@ -14,7 +17,7 @@ googleBtn.addEventListener("click", () => {
             const user = result.user;
             // IdP data available using getAdditionalUserInfo(result)
             // ...
-            window.location.href = "loged.html";
+            window.location.href = "profile";
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;

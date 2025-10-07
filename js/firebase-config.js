@@ -1,9 +1,25 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    query,
+    where,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyDwOE-BPRa0-Hp8hWxXgTiQRLvc-v2SeDU",
@@ -17,4 +33,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export { doc, setDoc, getDoc, collection, query, where, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, updateProfile };
+export {
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    query,
+    where,
+    getDocs,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup
+};
